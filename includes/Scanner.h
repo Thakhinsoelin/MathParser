@@ -1,4 +1,5 @@
 #pragma once
+#define TO_STR(x) #x
 #include "Ast.h"
 
 typedef enum {
@@ -12,10 +13,18 @@ typedef enum {
     TOK_RPAREN
 } TokenType;
 
+char *turnToString(TokenType type);
+
 typedef struct {
     TokenType type;
     double number;
 }Token;
 
+typedef struct{
+  int start;
+  int current;
+}Pointer;
 
-void scanTokens(Token* tokens, const char* input);
+Pointer *createPointer();
+
+void scanTokens(Token* tokens, Pointer* pointer, const char* input);

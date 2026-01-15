@@ -4,8 +4,16 @@
 #include "Scanner.h"
 
 int main(void) {
-    Tokens* tokens = vector_create();
-    scanTokens(tokens, "-5 * (3 + 4)");
+  Pointer *pointer = createPointer();
+    Token* tokens = vector_create();
+    scanTokens(&tokens, pointer, "-5 unknown * (3 + 4)");
+    vec_size_t size = vector_size(tokens);
+    printf("%li\n", size);
+    for (vec_size_t i = 0; i < size; i++) {
+      TokenType type = tokens[i].type;
+      printf("Token %d: Type %s\n", i, turnToString(type));
+    }
+    return 0;
     ASTNode* test =
         ast_binary(OP_MUL,
             ast_binary(OP_ADD,
