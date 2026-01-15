@@ -15,3 +15,4 @@ ASTNode* parse_expression(Lexer* l);
 ASTNode* parse_term(Lexer* l);
 ASTNode* parse_factor(Lexer* l);
 
+void parse(Token** tokens);
