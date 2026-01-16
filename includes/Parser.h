@@ -4,15 +4,8 @@
 #include "Scanner.h"
 
 typedef struct {
-    const char* src;
-    size_t pos;
-    Token current;
-} Lexer;
+  Token *tokens;
+  int current;
+}Parser;
 
-void lexer_next(Lexer* l);
-
-ASTNode* parse_expression(Lexer* l);
-ASTNode* parse_term(Lexer* l);
-ASTNode* parse_factor(Lexer* l);
-
-void parse(Token** tokens);
+ASTNode* parse(Token** tokens, Parser* p);
